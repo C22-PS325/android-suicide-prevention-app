@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.suicidepreventiveapp.databinding.FragmentDashboardBinding
-import com.example.suicidepreventiveapp.viewmodel.DashboardViewModel
+import com.example.suicidepreventiveapp.databinding.FragmentIndicatorBinding
+import com.example.suicidepreventiveapp.viewmodel.IndicatorViewModel
 
-class DashboardFragment : Fragment() {
+class IndicatorFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentIndicatorBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,9 +24,9 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(IndicatorViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentIndicatorBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard

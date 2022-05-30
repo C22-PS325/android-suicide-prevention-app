@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home"/>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.suicidepreventiveapp.fragment.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard"/>
+        android:id="@+id/navigation_indicator"
+        android:name="com.example.suicidepreventiveapp.fragment.IndicatorFragment"
+        android:label="@string/title_indicator"
+        tools:layout="@layout/fragment_indicator"/>
 
     <fragment
         android:id="@+id/navigation_diary"
