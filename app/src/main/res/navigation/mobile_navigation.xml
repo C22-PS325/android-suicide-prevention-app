@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_dashboard"/>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.suicidepreventiveapp.fragment.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications"/>
+        android:id="@+id/navigation_diary"
+        android:name="com.example.suicidepreventiveapp.fragment.DiaryFragment"
+        android:label="@string/title_diary"
+        tools:layout="@layout/fragment_diary"/>
 
 
     <fragment
