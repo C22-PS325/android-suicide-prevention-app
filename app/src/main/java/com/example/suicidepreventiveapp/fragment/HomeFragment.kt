@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.suicidepreventiveapp.R
@@ -40,15 +41,15 @@ class HomeFragment : Fragment() {
 //            textView.text = it
 //        }
 
-        binding.diaryCard.setOnClickListener {
-            val diaryFragment = DiaryFragment()
-            fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.nav_host_fragment_activity_main, diaryFragment, DiaryFragment::class.java.simpleName)
-                addToBackStack(null)
-                commit()
-            }
-        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.diaryCard.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_navigation_home_to_navigation_diary)
+        )
     }
 
     override fun onDestroyView() {
