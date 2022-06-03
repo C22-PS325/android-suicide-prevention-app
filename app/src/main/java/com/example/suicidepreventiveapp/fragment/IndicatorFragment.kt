@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import com.example.suicidepreventiveapp.databinding.FragmentIndicatorBinding
-import com.example.suicidepreventiveapp.viewmodel.IndicatorViewModel
 
 class IndicatorFragment : Fragment() {
 
@@ -23,17 +20,15 @@ class IndicatorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(IndicatorViewModel::class.java)
+//        val dashboardViewModel = ViewModelProvider(this).get(IndicatorViewModel::class.java)
 
         _binding = FragmentIndicatorBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+//        val textView: TextView = binding.textDashboard
+//        dashboardViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+        return binding.root
     }
 
     override fun onDestroyView() {

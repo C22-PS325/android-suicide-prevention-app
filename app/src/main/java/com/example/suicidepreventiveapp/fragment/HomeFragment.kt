@@ -14,7 +14,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.suicidepreventiveapp.R
-import com.example.suicidepreventiveapp.data.DiaryCard
 import com.example.suicidepreventiveapp.databinding.FragmentHomeBinding
 import com.example.suicidepreventiveapp.viewmodel.HomeViewModel
 
@@ -47,9 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.diaryCard.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_navigation_home_to_navigation_diary)
-        )
+
     }
 
     override fun onDestroyView() {

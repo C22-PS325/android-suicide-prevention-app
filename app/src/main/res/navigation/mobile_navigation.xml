@@ -9,23 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="com.example.suicidepreventiveapp.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_diary"
-            app:destination="@id/navigation_diary" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_indicator"
         android:name="com.example.suicidepreventiveapp.fragment.IndicatorFragment"
         android:label="@string/title_indicator"
         tools:layout="@layout/fragment_indicator"/>
-
-    <fragment
-        android:id="@+id/navigation_diary"
-        android:name="com.example.suicidepreventiveapp.fragment.DiaryFragment"
-        android:label="@string/title_diary"
-        tools:layout="@layout/fragment_diary"/>
 
 
     <fragment

@@ -1,14 +1,23 @@
 <resources>
     <string name="app_name">Suicide Preventive App</string>
-    <string name="title_home">Home</string>
-    <string name="title_indicator">Indicator</string>
-    <string name="title_diary">Diary</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_indicator">Hasil</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_reminder">Reminder</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Selamat Datang,</string>
     <string name="username"><u>Nama Pengguna</u></string>
-    <string name="diary_text_card">Apa kamu sudah mengisi diary hari ini? Jika belum, isi diary-mu dengan mengklik card ini, yuk!</string>
+    <string name="reminder_text_card">Apa kamu sudah mengisi diary hari ini? Jika belum, isi diary-mu dengan memilih menu di bawah, yuk!</string>
     <string name="content_description">icon</string>
+    <string name="diary">Diary</string>
+    <string name="call_care_giver">Hubungi\nCare-giver</string>
+    <string name="call_doctor">Hubungi\nDokter</string>
+    <string name="call_hospital">Hubungi\nRumah Sakit</string>
+    <string name="result_title">Hasil Pengisian Diary</string>
+    <string name="questionnaire">Isi Kuesioner</string>
+    <string name="selfie">Ambil Swafoto</string>
+    <string name="voice_record">Rekam Suara</string>
+    <string name="helper">Bantuan Untukmu</string>
 
     <string-array name="card_title">
         <item>Diary</item>
@@ -17,7 +26,7 @@
     </string-array>
 
     <integer-array name="card_photo">
-        <item>@drawable/logo_2</item>
+        <item>@drawable/ic_logo_diary</item>
         <item>@drawable/logo_1</item>
         <item>@drawable/logo</item>
     </integer-array>

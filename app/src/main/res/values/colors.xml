@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
+    <color name="benjamin_moore">#7F8487</color>
     <color name="shade_cyan">#489FB5</color>
     <color name="grey_divider">#EEEEEE</color>
     <color name="medium_light_shade_cyan">#82C0CC</color>
