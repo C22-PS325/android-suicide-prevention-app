@@ -18,10 +18,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/title_result_diary"
                 style="@style/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,6 +31,78 @@
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_refresh"
+                style="@style/clickable_text_shade_cyan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/refresh"
+                app:drawableStartCompat="@drawable/ic_baseline_refresh_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/kesimpulan_placeholder"
+                style="@style/card_content_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/kesimpulan_placeholder"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_emoji_result" />
+
+            <TextView
+                android:id="@+id/saran_placeholder"
+                style="@style/card_content_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/saran_placeholder"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kesimpulan_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_kesimpulan"
+                style="@style/card_content_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/emoji_level_green_kesimpulan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.181"
+                app:layout_constraintStart_toEndOf="@+id/kesimpulan_placeholder"
+                app:layout_constraintTop_toBottomOf="@+id/iv_emoji_result" />
+
+            <TextView
+                android:id="@+id/tv_saran"
+                style="@style/card_content_text"
+                android:layout_width="218dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/emoji_level_green_saran"
+                app:layout_constraintEnd_toEndOf="@id/tv_kesimpulan"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_kesimpulan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_kesimpulan" />
+
+            <ImageView
+                android:id="@+id/iv_emoji_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_emoji_level_green"
+                app:layout_constraintEnd_toEndOf="@+id/title_result_diary"
+                app:layout_constraintStart_toStartOf="@+id/title_result_diary"
+                app:layout_constraintTop_toBottomOf="@+id/title_result_diary" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

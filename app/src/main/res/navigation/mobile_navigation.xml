@@ -23,4 +23,16 @@
         android:name="com.example.suicidepreventiveapp.fragment.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/questionnaireFragment"
+        android:name="com.example.suicidepreventiveapp.fragment.QuestionnaireFragment"
+        android:label="QuestionnaireFragment" />
+    <fragment
+        android:id="@+id/questionnaire2Fragment"
+        android:name="com.example.suicidepreventiveapp.fragment.Questionnaire2Fragment"
+        android:label="Questionnaire2Fragment" />
+    <fragment
+        android:id="@+id/questionnaire3Fragment"
+        android:name="com.example.suicidepreventiveapp.fragment.Questionnaire3Fragment"
+        android:label="Questionnaire3Fragment" />
 </navigation>

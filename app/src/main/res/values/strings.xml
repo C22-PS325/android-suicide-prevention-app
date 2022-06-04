@@ -19,15 +19,46 @@
     <string name="voice_record">Rekam Suara</string>
     <string name="helper">Bantuan Untukmu</string>
 
-    <string-array name="card_title">
-        <item>Diary</item>
-        <item>Heart Rate</item>
-        <item>Screen Time</item>
-    </string-array>
+    <string name="question_1">1. Apakah hari ini sudah teratur minum obat?</string>
+    <string name="question_2">2. Bagaimana kadar stress-mu hari ini?</string>
+    <string name="question_3">3. Bagaimana kadar rasa takut yang muncul hari ini?</string>
+    <string name="question_4">4. Adakah gejala kekambuhan yang kamu rasakan hari ini?</string>
+    <string name="question_5">5. Jika ada, apa gejala kekambuhan yang kamu rasakan hari ini?</string>
+    <string name="question_6">6. Apakah Anda pernah ingin mati atau Anda ingin pergi tidur dan tidak bangun?</string>
+    <string name="question_7">7. Apakah Anda pernah benar-benar punya pikiran untuk membunuh diri Anda?</string>
+    <string name="question_5_desc">(Jika tidak ada, lewati pertanyaan ini)</string>
+    <string name="gejala_kekambuhan_1">Gejala kekambuhan 1</string>
+    <string name="gejala_kekambuhan_2">Gejala kekambuhan 2</string>
+    <string name="gejala_kekambuhan_3">Gejala kekambuhan 3</string>
+    <string name="sudah">Sudah</string>
+    <string name="belum">Belum</string>
+    <string name="stress">Stress</string>
+    <string name="biasa_saja">Biasa saja</string>
+    <string name="takut">Takut</string>
+    <string name="ada">Ada</string>
+    <string name="tidak_ada">Tidak ada</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="louis_van_gaal">Louis Van Gaal</string>
+    <string name="david_moyes">David Moyes</string>
+    <string name="choose">Pilih</string>
+    <string name="close">Tutup</string>
+    <string name="selanjutnya">Selanjutnya</string>
+    <string name="simpan">Simpan</string>
+    <string name="selfie_result">Foto wajah kamu</string>
+    <string name="take_selfie">Ambil Gambar Wajah</string>
+    <string name="refresh">Segarkan</string>
+    <string name="kesimpulan_placeholder">Kesimpulan:</string>
+    <string name="saran_placeholder">Saran:</string>
 
-    <integer-array name="card_photo">
-        <item>@drawable/ic_logo_diary</item>
-        <item>@drawable/logo_1</item>
-        <item>@drawable/logo</item>
-    </integer-array>
+    <string name="emoji_level_green_kesimpulan">Tidak membutuhkan bantuan</string>
+    <string name="emoji_level_yellow_kesimpulan">Sepertinya membutuhkan bantuan</string>
+    <string name="emoji_level_red_kesimpulan">Membutuhkan bantuan segera</string>
+    <string name="emoji_level_green_saran">Cek kembali secara rutin</string>
+    <string name="emoji_level_yellow_saran">Hubungi orang terdekat yang bisa kamu percaya</string>
+    <string name="emoji_level_red_saran">Hubungi fasilitas kesehatan di bawah ini</string>
+    <string name="read_this_text">Baca teks berikut</string>
+    <string name="text_content">Contoh teks yang harus dibaca saat perekaman</string>
+    <string name="rekam">Rekam Suara</string>
+
 </resources>
