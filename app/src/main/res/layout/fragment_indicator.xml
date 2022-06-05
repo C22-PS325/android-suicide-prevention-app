@@ -40,6 +40,7 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
                 android:text="@string/refresh"
+                android:drawablePadding="4dp"
                 app:drawableStartCompat="@drawable/ic_baseline_refresh_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/card_title"
+                android:id="@+id/card_title_voice_rec"
                 style="@style/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_title" />
+                app:layout_constraintTop_toBottomOf="@+id/card_title_voice_rec" />
 
             <Button
                 android:id="@+id/btn_voice_rec"
