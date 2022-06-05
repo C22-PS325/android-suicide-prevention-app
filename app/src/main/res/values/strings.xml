@@ -60,5 +60,22 @@
     <string name="read_this_text">Baca teks berikut</string>
     <string name="text_content">Contoh teks yang harus dibaca saat perekaman</string>
     <string name="rekam">Rekam Suara</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="register">Register</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="phone">Nomor Telepon</string>
+    <string name="password">Kata Sandi</string>
+    <string name="have_account"><u>Sudah punya akun?</u></string>
+    <string name="dont_have_account"><u>Belum punya akun?</u></string>
+    <string name="login_with_google">Masuk dengan Google</string>
+    <string name="login">Login</string>
 
 </resources>

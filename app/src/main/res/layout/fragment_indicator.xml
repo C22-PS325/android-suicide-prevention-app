@@ -155,7 +155,7 @@
 
             <TextView
                 android:id="@+id/text_care_giver"
-                style="@style/card_button"
+                style="@style/clickable_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/call_care_giver"
@@ -193,7 +193,7 @@
 
             <TextView
                 android:id="@+id/text_call_doctor"
-                style="@style/card_button"
+                style="@style/clickable_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/call_doctor"
@@ -231,7 +231,7 @@
 
             <TextView
                 android:id="@+id/text_call_hospital"
-                style="@style/card_button"
+                style="@style/clickable_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/call_hospital"
