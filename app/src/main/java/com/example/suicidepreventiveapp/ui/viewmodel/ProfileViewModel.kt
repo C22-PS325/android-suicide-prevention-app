@@ -1,13 +1,13 @@
-package com.example.suicidepreventiveapp.viewmodel
+package com.example.suicidepreventiveapp.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class IndicatorViewModel : ViewModel() {
+class ProfileViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is indicator Fragment"
+        value = "This is profile fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -1,4 +1,4 @@
-package com.example.suicidepreventiveapp.fragment
+package com.example.suicidepreventiveapp.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,11 +21,4 @@ class Questionnaire3Fragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        binding.buttonSave.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(R.id.action_questionnaire3Fragment_to_navigation_home)
-//        )
-    }
 }

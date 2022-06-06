@@ -42,19 +42,6 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        binding.tvDontHaveAccount.setOnClickListener {
-//            val registerFragment = RegisterFragment()
-//            fragmentManager?.beginTransaction()?.apply {
-//                replace(R.id.nav_host_fragment_activity_main, registerFragment, RegisterFragment::class.java.simpleName)
-//                addToBackStack(null)
-//                commit()
-//            }
-//        }
-    }
-
     companion object {
         /**
          * Use this factory method to create a new instance of

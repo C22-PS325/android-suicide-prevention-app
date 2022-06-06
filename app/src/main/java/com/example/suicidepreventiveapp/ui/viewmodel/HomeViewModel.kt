@@ -1,4 +1,4 @@
-package com.example.suicidepreventiveapp.viewmodel
+package com.example.suicidepreventiveapp.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
