@@ -7,32 +7,32 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.suicidepreventiveapp.fragment.HomeFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_indicator"
-        android:name="com.example.suicidepreventiveapp.fragment.IndicatorFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.IndicatorFragment"
         android:label="@string/title_indicator"
         tools:layout="@layout/fragment_indicator"/>
 
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.suicidepreventiveapp.fragment.ProfileFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/questionnaireFragment"
-        android:name="com.example.suicidepreventiveapp.fragment.QuestionnaireFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.QuestionnaireFragment"
         android:label="QuestionnaireFragment" />
     <fragment
         android:id="@+id/questionnaire2Fragment"
-        android:name="com.example.suicidepreventiveapp.fragment.Questionnaire2Fragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.Questionnaire2Fragment"
         android:label="Questionnaire2Fragment" />
     <fragment
         android:id="@+id/questionnaire3Fragment"
-        android:name="com.example.suicidepreventiveapp.fragment.Questionnaire3Fragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.Questionnaire3Fragment"
         android:label="Questionnaire3Fragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.suicidepreventiveapp.fragment
+package com.example.suicidepreventiveapp.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.suicidepreventiveapp.R
-import com.example.suicidepreventiveapp.databinding.FragmentHomeBinding
 import com.example.suicidepreventiveapp.databinding.FragmentProfileBinding
-import com.example.suicidepreventiveapp.viewmodel.HomeViewModel
-import com.example.suicidepreventiveapp.viewmodel.ProfileViewModel
+import com.example.suicidepreventiveapp.ui.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 
