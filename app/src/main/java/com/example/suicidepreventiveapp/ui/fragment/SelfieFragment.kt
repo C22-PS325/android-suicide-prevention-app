@@ -1,60 +1,181 @@
 package com.example.suicidepreventiveapp.ui.fragment
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.example.suicidepreventiveapp.R
+import com.example.suicidepreventiveapp.data.preferences.UserModel
+import com.example.suicidepreventiveapp.data.preferences.UserPreferences
+import com.example.suicidepreventiveapp.data.remote.response.ImagePredictionResponse
+import com.example.suicidepreventiveapp.data.remote.retrofit.ApiConfig
+import com.example.suicidepreventiveapp.databinding.FragmentSelfieBinding
+import com.example.suicidepreventiveapp.ui.activity.CameraActivity
+import com.example.suicidepreventiveapp.ui.custom.LoadingDialogBar
+import com.example.suicidepreventiveapp.utils.createCustomTempFile
+import com.example.suicidepreventiveapp.utils.reduceFileImage
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SelfieFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SelfieFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentSelfieBinding? = null
+    private val binding get() = _binding!!
+
+    private var getFile: File? = null
+
+    private lateinit var mUserPreferences: UserPreferences
+    private lateinit var userModel: UserModel
+
+    private lateinit var loadingDialogBar: LoadingDialogBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_selfie, container, false)
+        _binding = FragmentSelfieBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mUserPreferences = UserPreferences(requireContext())
+
+        loadingDialogBar = LoadingDialogBar(requireContext())
+
+        binding.btnTakeSelfie.setOnClickListener {
+            if (!allPermissionGranted()) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    REQUIRED_PERMISSIONS,
+                    REQUEST_CODE_PERMISSIONS
+                )
+            } else {
+                openCamera()
+            }
+        }
+
+        binding.buttonSave.setOnClickListener { uploadPhoto() }
+    }
+
+    private fun openCamera() {
+        val intent = Intent(requireContext(), CameraActivity::class.java)
+        launcherIntentCameraX.launch(intent)
+    }
+
+    private fun uploadPhoto() {
+        loadingDialogBar.showDialog("Mohon Tunggu...")
+        when {
+            getFile == null -> {
+                loadingDialogBar.hideDialog()
+                Toast.makeText(requireContext(), "Silahkan foto terlebih dahulu", Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {
+                userModel = mUserPreferences.getUser()
+
+                val file = reduceFileImage(getFile as File)
+                val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                    "file",
+                    file.name,
+                    requestImageFile
+                )
+
+                val service = ApiConfig.getApiService().imagePrediction(imageMultipart, "Bearer ${userModel.accessToken}")
+                service.enqueue(object : Callback<ImagePredictionResponse> {
+                    override fun onResponse(
+                        call: Call<ImagePredictionResponse>,
+                        response: Response<ImagePredictionResponse>
+                    ) {
+                        loadingDialogBar.hideDialog()
+                        Toast.makeText(requireContext(), "onresponseee", Toast.LENGTH_SHORT).show()
+                        if (response.isSuccessful) {
+                            Log.d("SELFIE FRAGEMNT", "berhasil")
+                            Toast.makeText(requireContext(), "onresponseee SUCCESS", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), (response.body()?.response?.get(0))!!, Toast.LENGTH_SHORT).show()
+                            Log.d("SELFIE FRAGMENT", response.body().toString())
+
+                        } else {
+                            Log.e("SELFIE FRAGMENT", "error asus")
+                            Toast.makeText(requireContext(), "onresponseee ERRORRR", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ImagePredictionResponse>, t: Throwable) {
+                        loadingDialogBar.hideDialog()
+                        Toast.makeText(requireContext(), t.message.toString(), Toast.LENGTH_SHORT).show()
+                        Log.d("SELFIE FRAGMENT ERRORRR", t.message.toString())
+                    }
+
+                })
+
+            }
+        }
+
+    }
+
+    private fun allPermissionGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionGranted()) {
+                Toast.makeText(
+                    requireContext(),
+                    "tidak mendapatkan permission",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private val launcherIntentCameraX = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == CAMERA_X_RESULT) {
+            getFile = it.data?.getSerializableExtra("picture") as File
+            val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
+            val result = BitmapFactory.decodeFile(getFile!!.path)
+
+            binding.selfieResult.setImageBitmap(result)
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SelfieFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SelfieFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+        const val CAMERA_X_RESULT = 200
+
+        private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
+
+        const val RESULT_CODE = 110
+
     }
 }

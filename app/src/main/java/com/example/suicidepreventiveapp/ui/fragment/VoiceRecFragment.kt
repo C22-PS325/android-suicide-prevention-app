@@ -1,60 +1,110 @@
 package com.example.suicidepreventiveapp.ui.fragment
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.media.MediaRecorder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.suicidepreventiveapp.R
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.suicidepreventiveapp.databinding.FragmentVoiceRecBinding
+import java.io.IOException
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VoiceRecFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class VoiceRecFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentVoiceRecBinding? = null
+    private val binding get() = _binding!!
+
+    private var output: String? = null
+    private var mediaRecorder: MediaRecorder? = null
+    private var state: Boolean = false
+    private var recordingStopped: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_voice_rec, container, false)
+        _binding = FragmentVoiceRecBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mediaRecorder = MediaRecorder()
+
+        mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
+        mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+        mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+        mediaRecorder?.setOutputFile(output)
+
+        binding.btnStartSound.setOnClickListener {
+            if (!allPermissionGranted()) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    VoiceRecFragment.REQUIRED_PERMISSIONS,
+                    VoiceRecFragment.REQUEST_CODE_PERMISSIONS
+                )
+            } else {
+                startRecording()
+            }
+        }
+
+        binding.btnStopSound.setOnClickListener { stopRecording() }
+    }
+
+    private fun startRecording() {
+        Toast.makeText(requireContext(), "Rekaman belim mulai!", Toast.LENGTH_SHORT).show()
+        try {
+            mediaRecorder?.prepare()
+            mediaRecorder?.start()
+            state = true
+            Toast.makeText(requireContext(), "Rekaman Dimulai!", Toast.LENGTH_SHORT).show()
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun stopRecording() {
+        if(state){
+            mediaRecorder?.stop()
+            mediaRecorder?.release()
+            state = false
+        }else{
+            Toast.makeText(requireContext(), "Kamu belum mulai merekam", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun allPermissionGranted() = VoiceRecFragment.REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == VoiceRecFragment.REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionGranted()) {
+                Toast.makeText(
+                    requireContext(),
+                    "tidak mendapatkan permission",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment VoiceRecFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VoiceRecFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.RECORD_AUDIO)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
 }

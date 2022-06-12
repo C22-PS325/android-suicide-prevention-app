@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.suicidepreventiveapp.R
+import com.example.suicidepreventiveapp.data.preferences.UserModel
+import com.example.suicidepreventiveapp.data.preferences.UserPreferences
 import com.example.suicidepreventiveapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var userPreferences: UserPreferences
+    private lateinit var userData: UserModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +29,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        userPreferences = UserPreferences(view.context)
+        userData = userPreferences.getUser()
+
+        binding.username.text = userData.username
 
         binding.cvQuestionnaire.setOnClickListener {
             val questionnaireFragment = QuestionnaireFragment()

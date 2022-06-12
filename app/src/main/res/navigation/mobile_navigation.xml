@@ -26,13 +26,26 @@
     <fragment
         android:id="@+id/questionnaireFragment"
         android:name="com.example.suicidepreventiveapp.ui.fragment.QuestionnaireFragment"
-        android:label="QuestionnaireFragment" />
+        android:label="QuestionnaireFragment"
+        tools:layout="@layout/fragment_questionnaire"/>
     <fragment
         android:id="@+id/questionnaire2Fragment"
         android:name="com.example.suicidepreventiveapp.ui.fragment.Questionnaire2Fragment"
-        android:label="Questionnaire2Fragment" />
+        android:label="Questionnaire2Fragment"
+        tools:layout="@layout/fragment_questionnaire2"/>
     <fragment
         android:id="@+id/questionnaire3Fragment"
         android:name="com.example.suicidepreventiveapp.ui.fragment.Questionnaire3Fragment"
-        android:label="Questionnaire3Fragment" />
+        android:label="Questionnaire3Fragment"
+        tools:layout="@layout/fragment_questionnaire3"/>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.suicidepreventiveapp.ui.fragment.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
 </navigation>

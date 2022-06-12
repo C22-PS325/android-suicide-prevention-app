@@ -7,8 +7,9 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="379dp"
-        android:layout_height="240dp"
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,19 +19,24 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <ImageView
                 android:id="@+id/selfie_result"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
                 android:layout_marginTop="24dp"
+                android:scaleType="fitXY"
+                android:rotation="-90"
                 android:background="@drawable/dash_border"
                 android:contentDescription="@string/selfie_result"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars"/>
 
             <TextView
                 android:id="@+id/btn_take_selfie"
@@ -48,15 +54,13 @@
             <Button
                 android:id="@+id/button_save"
                 style="@style/button_text"
-                android:layout_width="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/simpan"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_take_selfie"
-                app:layout_constraintVertical_bias="0.6" />
+                app:layout_constraintEnd_toEndOf="@+id/btn_take_selfie"
+                app:layout_constraintStart_toStartOf="@+id/btn_take_selfie"
+                app:layout_constraintTop_toBottomOf="@+id/btn_take_selfie" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -87,5 +91,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="56dp" />
+        app:layout_constraintGuide_begin="329dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
