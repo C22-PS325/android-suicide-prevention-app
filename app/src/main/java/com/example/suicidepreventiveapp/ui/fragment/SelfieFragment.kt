@@ -110,21 +110,16 @@ class SelfieFragment : Fragment() {
                     ) {
                         loadingDialogBar.hideDialog()
                         if (response.isSuccessful) {
-                            Log.d("SELFIE FRAGEMNT", "berhasil")
-                            Toast.makeText(requireContext(), "onresponseee SUCCESS", Toast.LENGTH_SHORT).show()
                             Toast.makeText(requireContext(), (response.body()?.response?.get(0))!!, Toast.LENGTH_SHORT).show()
-                            Log.d("SELFIE FRAGMENT", response.body().toString())
 
                         } else {
-                            Log.e("SELFIE FRAGMENT", "error asus")
-                            Toast.makeText(requireContext(), "onresponseee ERRORRR", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Something Wrong", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<ImagePredictionResponse>, t: Throwable) {
                         loadingDialogBar.hideDialog()
                         Toast.makeText(requireContext(), t.message.toString(), Toast.LENGTH_SHORT).show()
-                        Log.d("SELFIE FRAGMENT ERRORRR", t.message.toString())
                     }
 
                 })

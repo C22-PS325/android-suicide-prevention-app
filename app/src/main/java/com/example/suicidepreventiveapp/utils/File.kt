@@ -45,7 +45,7 @@ fun createFileAudio(application: Application, nameFile: String): File {
         mediaDir != null && mediaDir.exists()
     ) mediaDir else application.filesDir
 
-    return File(outputDirectory, "$nameFile.m4a")
+    return File(outputDirectory, "$nameFile.wav")
 }
 
 fun uriToFile(selectedImg: Uri, context: Context) : File {

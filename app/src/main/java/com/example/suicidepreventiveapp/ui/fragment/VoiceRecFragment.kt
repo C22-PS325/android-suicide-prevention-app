@@ -134,7 +134,7 @@ class VoiceRecFragment : Fragment() {
             mediaRecorder = MediaRecorder()
 
             mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-            mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT)
             mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
             mediaRecorder?.setOutputFile(output)
             mediaRecorder?.prepare()
@@ -184,7 +184,7 @@ class VoiceRecFragment : Fragment() {
             else -> {
                 userModel = mUserPreferences.getUser()
 
-                val requestAudioFile = getFile.asRequestBody("audio/m4a".toMediaTypeOrNull())
+                val requestAudioFile = getFile.asRequestBody("audio/wav".toMediaTypeOrNull())
                 val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                     "file",
                     getFile.name,
