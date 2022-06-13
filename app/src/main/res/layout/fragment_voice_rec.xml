@@ -7,13 +7,12 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
         app:layout_constraintVertical_bias="0.0">
 
@@ -52,7 +51,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="12dp"
                 android:backgroundTint="@color/red"
-                android:drawableLeft="@drawable/ic_stop"
+                android:drawableStart="@drawable/ic_stop"
                 android:text="@string/stop_sound"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -63,38 +62,42 @@
                 android:id="@+id/btn_start_sound"
                 style="@style/button_text"
                 android:layout_width="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:backgroundTint="@color/teal_700"
-                android:drawableLeft="@drawable/ic_play"
+                android:drawableStart="@drawable/ic_play"
                 android:text="@string/start_sound"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_voice_rec"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_stop_sound" />
+
+            <Button
+                android:id="@+id/button_play_audio"
+                style="@style/button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_200"
+                android:layout_margin="16dp"
+                android:text="@string/putar_rekaman"
+                app:layout_constraintTop_toBottomOf="@+id/btn_stop_sound"
+                tools:layout_editor_absoluteX="23dp" />
 
             <Button
                 android:id="@+id/button_save"
                 style="@style/button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/simpan"
                 android:layout_margin="16dp"
+                android:text="@string/upload_rekaman"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_stop_sound"
+
+                app:layout_constraintTop_toBottomOf="@+id/button_play_audio"
                 app:layout_constraintVertical_bias="0.448" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"

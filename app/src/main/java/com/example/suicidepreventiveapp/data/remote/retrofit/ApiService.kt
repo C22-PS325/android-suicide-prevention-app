@@ -1,9 +1,6 @@
 package com.example.suicidepreventiveapp.data.remote.retrofit
 
-import com.example.suicidepreventiveapp.data.remote.response.ImagePredictionResponse
-import com.example.suicidepreventiveapp.data.remote.response.LoginResponse
-import com.example.suicidepreventiveapp.data.remote.response.RefreshTokenResponse
-import com.example.suicidepreventiveapp.data.remote.response.RegisterResponse
+import com.example.suicidepreventiveapp.data.remote.response.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -46,4 +43,11 @@ interface ApiService {
         @Part File: MultipartBody.Part,
         @Header("Authorization") token: String
     ) : Call<ImagePredictionResponse>
+
+    @Multipart
+    @POST("audio/predict")
+    fun voicePrediction(
+        @Part File: MultipartBody.Part,
+        @Header("Authorization") token: String
+    ) : Call<VoicePredictionResponse>
 }

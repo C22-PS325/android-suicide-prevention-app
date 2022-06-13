@@ -36,6 +36,18 @@ fun createFile(application: Application): File {
     return File(outputDirectory, "emotion_patient.jpg")
 }
 
+fun createFileAudio(application: Application, nameFile: String): File {
+    val mediaDir = application.externalMediaDirs.firstOrNull()?.let {
+        File(it, application.resources.getString(R.string.app_name)).apply { mkdirs() }
+    }
+
+    val outputDirectory = if (
+        mediaDir != null && mediaDir.exists()
+    ) mediaDir else application.filesDir
+
+    return File(outputDirectory, "$nameFile.m4a")
+}
+
 fun uriToFile(selectedImg: Uri, context: Context) : File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = createCustomTempFile(context)

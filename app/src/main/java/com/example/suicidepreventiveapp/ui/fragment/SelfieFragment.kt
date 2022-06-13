@@ -109,7 +109,6 @@ class SelfieFragment : Fragment() {
                         response: Response<ImagePredictionResponse>
                     ) {
                         loadingDialogBar.hideDialog()
-                        Toast.makeText(requireContext(), "onresponseee", Toast.LENGTH_SHORT).show()
                         if (response.isSuccessful) {
                             Log.d("SELFIE FRAGEMNT", "berhasil")
                             Toast.makeText(requireContext(), "onresponseee SUCCESS", Toast.LENGTH_SHORT).show()
